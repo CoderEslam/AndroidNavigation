@@ -16,24 +16,23 @@ import com.doubleclick.androidnavigation.R
 import com.doubleclick.androidnavigation.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val binding: FragmentTitleBinding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_title, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var binding :FragmentTitleBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_title,container,false)
+
         binding.playButton.setOnClickListener { v: View ->
-            v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
+            v.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment()) // or =>  Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_gameFragment)
         }
-        setHasOptionsMenu(true)
+//        setHasOptionsMenu(true)
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.overflow_menu, menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.overflow_menu, menu)
+//    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
-                || super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
+//                || super.onOptionsItemSelected(item)
+//    }
 }
